@@ -5,6 +5,41 @@
 
 Podman-in-podman (PINP) container image with Ansible Molecule.
 
+## Image Tags
+
+* `latest`: Latest stable version of the container currently based on Podman 4.2.0.
+
+## How to Build
+
+This image is built on GitHub automatically any time a commit is made or merged to the `main` branch and tagged. But if you need to build the image on your own locally, do the following:
+
+1. Install [Podman](https://podman.io/getting-started/installation).
+2. `cd` into the directory containing this repository.
+3. Build the image:
+
+   ```shell
+   podman build --file Containerfile --tag container-podman-molecule:latest .
+   ```
+
+## How to Use
+
+1. Install [Podman](https://podman.io/getting-started/installation).
+2. Pull this image from GitHub (or use the image you built above `container-podman-molecule:latest`):
+
+   ```shell
+   podman pull ghcr.io/chpc-uofu/container-podman-molecule:latest
+   ```
+3. Run a container from the image:
+
+   ```shell
+   podman run \
+     -it \
+     --privileged \
+     --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro \
+     ghcr.io/chpc-uofu/container-podman-molecule:latest \
+     bash
+   ```
+
 ## Resources
 
 * [Ansible Molecule Documentation](https://molecule.readthedocs.io/en/latest/)

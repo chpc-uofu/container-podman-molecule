@@ -6,8 +6,7 @@ ARG podmanversion="4.2.0"
 FROM quay.io/podman/stable:v${podmanversion}
 
 # Package installs/updates:
-RUN dnf update -y && \
-    dnf install -y \
+RUN dnf install -y \
       git \
       pip
 
@@ -18,7 +17,7 @@ COPY ./requirements.txt /tmp/requirements.txt
 RUN pip install --upgrade pip && \
     pip install -r /tmp/requirements.txt
 
-# Clean up Pip packages file:
+# Clean up extra files:
 RUN rm /tmp/requirements.txt
 
 # Override container.conf:
