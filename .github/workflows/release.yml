@@ -55,7 +55,8 @@ jobs:
         with:
           context: .
           file: ./Containerfile
-          build-args: [ podmanversion="${{ env.PODMAN_VERSION }}" ]
+          build-args: |
+            podmanversion="${{ env.PODMAN_VERSION }}"
           push: true
           labels: ${{ steps.metadata.outputs.labels }}
           tags: ${{ steps.metadata.outputs.tags }}
