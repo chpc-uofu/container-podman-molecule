@@ -1,6 +1,6 @@
 
 # Container image build arguments:
-ARG podmanversion="4.2.0"
+ARG podmanversion="x.x.x"
 
 # Base image:
 FROM quay.io/podman/stable:v${podmanversion}
