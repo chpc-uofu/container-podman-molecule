@@ -50,6 +50,8 @@ jobs:
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
+        with:
+          platforms: 'arm64'
 
       - name: Set up Buildx
         uses: docker/setup-buildx-action@v2
@@ -61,6 +63,7 @@ jobs:
           file: ./Containerfile
           build-args: |
             podmanversion=${{ env.PODMAN_VERSION }}
+          platforms: linux/amd64,linux/arm64
           push: true
           labels: ${{ steps.metadata.outputs.labels }}
           tags: ${{ steps.metadata.outputs.tags }}
